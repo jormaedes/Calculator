@@ -25,8 +25,10 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-	if (b == 0)
-		return ("Impossible to divide by zero");
+	if (b == 0){
+		control = 0;
+		return ("Indeterminate");
+	}
 	return (a / b);
 }
 
@@ -73,6 +75,8 @@ percent.addEventListener('click', ()=>{
 point.addEventListener('click', ()=>{
 	if (display.textContent.includes('.'))
 		return ;
+	if (display.textContent == '')
+		display.textContent = '0';
 	display.textContent += '.';
 	control = 1;
 });
