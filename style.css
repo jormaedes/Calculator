@@ -53,12 +53,14 @@ button:hover {
 }
 
 .operator,
-#equal
+#equal,
+#percentage
 {
 	background: #D9781F;
 }
 
-.operator:hover
+.operator:hover,
+#percentage:hover
 {
 	background: #f38e2f;
 }
