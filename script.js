@@ -1,5 +1,23 @@
 const display = document.querySelector("#display");
 const numbers = [...document.querySelectorAll(".number")];
+const clean = document.querySelector("#clean");
+const btnDelete = document.querySelector("#delete");
+
+btnDelete.addEventListener('click', ()=>{
+	if (display.textContent == '0')
+		return ;
+	if (display.textContent.length === 1)
+		display.textContent = '0';
+	else{
+		const arr = display.textContent.split('');
+		arr.pop();
+		display.textContent = arr.join("");
+	}
+});
+
+clean.addEventListener('click', ()=>{
+	display.textContent = '0';
+});
 
 numbers.forEach(element=>{
 	element.addEventListener('click', ()=>{
