@@ -42,7 +42,6 @@ operators.map(el =>{
 	el.addEventListener("click", ()=>{
 		stash = display.textContent;
 		signal = el.textContent;
-		console.log(signal, stash);
 	});
 });
 
