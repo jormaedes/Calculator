@@ -4,8 +4,23 @@ const clean = document.querySelector("#clean");
 const btnDelete = document.querySelector("#delete");
 const point = document.querySelector("#point");
 const operators = [...document.querySelectorAll('.operator')];
+const percent = document.querySelector("#percentage");
+
 let signal = "";
 let stash = 0;
+
+
+percent.addEventListener('click', ()=>{
+	let value;
+	if (display.textContent[display.textContent.length - 1] == '.')
+		return ;
+	if (display.textContent.includes('.'))
+		value = parseFloat(display.textContent);
+	else
+		value = parseInt(display.textContent);
+	display.textContent = percentage(value).toString();
+});
+
 
 point.addEventListener('click', ()=>{
 	if (display.textContent.includes('.'))
