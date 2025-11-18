@@ -1,3 +1,15 @@
+const display = document.querySelector("#display");
+const numbers = [...document.querySelectorAll(".number")];
+
+numbers.forEach(element=>{
+	element.addEventListener('click', ()=>{
+		if(display.textContent == '0')
+			display.textContent = element.textContent;
+		else
+			display.textContent += element.textContent;
+	});
+});
+
 function add(a, b) {
 	return (a + b);
 }
