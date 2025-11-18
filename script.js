@@ -12,9 +12,55 @@ let signal = "";
 let stash = 0;
 let control = 0;
 
+function add(a, b) {
+	return (a + b);
+}
+
+function subtract(a, b) {
+	return (a - b);
+}
+
+function multiply(a, b) {
+	return (a * b);
+}
+
+function divide(a, b) {
+	if (b == 0)
+		return ("Impossible to divide by zero");
+	return (a / b);
+}
+
+function percentage(a) {
+	control = 0;
+	return (divide(a, 100));
+}
+
+function stringToNumber(n){
+	if (n.includes('.'))
+		return (parseFloat(n));
+	return (parseInt(n));
+}
+
+function execute(){
+	if (display.textContent[display.textContent.length - 1] == '.' || display.textContent == '')
+			return ;
+	const a = stringToNumber(stash);
+	const b = stringToNumber(display.textContent);
+	expression.textContent = `${a} ${signal} ${b}`;
+	if (signal == '+')
+		display.textContent = add(a, b).toString();
+	else if (signal == '-')
+		display.textContent = subtract(a, b).toString();
+	else if (signal == 'x')
+		display.textContent = multiply(a, b).toString();
+	else if (signal == '/')
+		display.textContent = divide(a, b).toString();
+}
+
 percent.addEventListener('click', ()=>{
 	let value;
-	if (display.textContent[display.textContent.length - 1] == '.')
+	if (display.textContent[display.textContent.length - 1] == '.'
+		||display.textContent == '')
 		return ;
 	if (display.textContent.includes('.'))
 		value = parseFloat(display.textContent);
@@ -81,50 +127,6 @@ operators.map(el =>{
 		display.textContent = '';
 	});
 });
-
-function add(a, b) {
-	return (a + b);
-}
-
-function subtract(a, b) {
-	return (a - b);
-}
-
-function multiply(a, b) {
-	return (a * b);
-}
-
-function divide(a, b) {
-	if (b == 0)
-		return ("Impossible to divide by zero");
-	return (a / b);
-}
-
-function percentage(a) {
-	return (divide(a, 100));
-}
-
-function stringToNumber(n){
-	if (n.includes('.'))
-		return (parseFloat(n));
-	return (parseInt(n));
-}
-
-function execute(){
-	if (display.textContent[display.textContent.length - 1] == '.' || display.textContent == '')
-			return ;
-	const a = stringToNumber(stash);
-	const b = stringToNumber(display.textContent);
-	expression.textContent = `${a} ${signal} ${b}`;
-	if (signal == '+')
-		display.textContent = add(a, b).toString();
-	else if (signal == '-')
-		display.textContent = subtract(a, b).toString();
-	else if (signal == 'x')
-		display.textContent = multiply(a, b).toString();
-	else if (signal == '/')
-		display.textContent = divide(a, b).toString();
-}
 
 equal.addEventListener('click', ()=>{
 	if (display.textContent == '')
