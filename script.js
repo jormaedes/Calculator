@@ -2,6 +2,16 @@ const display = document.querySelector("#display");
 const numbers = [...document.querySelectorAll(".number")];
 const clean = document.querySelector("#clean");
 const btnDelete = document.querySelector("#delete");
+const point = document.querySelector("#point");
+const operators = [...document.querySelectorAll('.operator')];
+let signal = "";
+let stash = 0;
+
+point.addEventListener('click', ()=>{
+	if (display.textContent.includes('.'))
+		return ;
+	display.textContent += '.';
+});
 
 btnDelete.addEventListener('click', ()=>{
 	if (display.textContent == '0')
@@ -19,12 +29,20 @@ clean.addEventListener('click', ()=>{
 	display.textContent = '0';
 });
 
-numbers.forEach(element=>{
-	element.addEventListener('click', ()=>{
+numbers.map(el=>{
+	el.addEventListener('click', ()=>{
 		if(display.textContent == '0')
-			display.textContent = element.textContent;
+			display.textContent = el.textContent;
 		else
-			display.textContent += element.textContent;
+			display.textContent += el.textContent;
+	});
+});
+
+operators.map(el =>{
+	el.addEventListener("click", ()=>{
+		stash = display.textContent;
+		signal = el.textContent;
+		console.log(signal, stash);
 	});
 });
 
@@ -49,3 +67,5 @@ function divide(a, b) {
 function percentage(a) {
 	return (divide(a, 100));
 }
+
+
